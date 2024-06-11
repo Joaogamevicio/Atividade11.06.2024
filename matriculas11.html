@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Matrículas</title>
+</head>
+<body>
+   
+    <h1>Verificação de Matrículas</h1>
+    <div id="resultado"></div>
+    <button onclick="lerMatriculas()">Ler Matrículas</button>
+    <button onclick="verificarPresenca()">Verificar Presença</button>
+ 
+    <script>
+        const MATRICULAS_ALUNOS = [];
+
+        function lerMatriculas() {
+            for (let i = 0; i < 100; i++) {
+                let matricula = parseInt(prompt("Digite a matrícula do aluno " + (i + 1)));
+                MATRICULAS_ALUNOS.push(matricula);
+            }
+        }
+
+        function verificarPresenca() {
+            let matriculaBusca = parseInt(prompt("Digite a matrícula a ser verificada"));
+            if (MATRICULAS_ALUNOS.includes(matriculaBusca)) {
+                document.getElementById("resultado").innerText = "Matrícula " + matriculaBusca + " encontrada no vetor.";
+            } else {
+                document.getElementById("resultado").innerText = "Matrícula " + matriculaBusca + " não encontrada no vetor.";
+            }
+        }
+    </script>
+ 
+</body>
+</html>

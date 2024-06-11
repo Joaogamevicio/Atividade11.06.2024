@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+</head>
+<body>
+   
+    <h1>Lista de Compras</h1>
+    <div id="itens"></div>
+    <button onclick="additens()">Adicionar</button>
+    <button onclick="alteraritens()">Alterar</button>
+    <button onclick="deletaritens()">Deletar</button>
+    <button onclick="deletarescolha()">Deletar escolha</button>
+ 
+ 
+ 
+ 
+    <script>
+ 
+        const itenslista = ["Vinagre","Sabonete"]
+        document.getElementById("itens").innerText = itenslista;
+        exibiritens()
+ 
+        function additens() {
+            let compra = prompt("Digite o nome do item")
+            itenslista.push(compra)
+            document.getElementById("itens").innerText = itenslista;
+            exibiritens()
+ 
+        }
+ 
+        function exibiritens (){
+            itenshtml = "<ol>"
+                for (let i = 0; i < itenslista.length; i++) {
+                    itenshtml += "<li>" + itenslista[i] + "</li>"
+                   
+                }
+                itenshtml += "</ol>"
+                document.getElementById("itens").innerHTML = itenshtml
+        }
+ 
+
+ 
+       
+ 
+        function deletaritens() {
+            itenslista.pop()
+            exibiritens()
+        }
+ 
+        function alteraritens() {
+            let item = prompt("Qual item deseja alterar?")
+            let itemconteudo = prompt(" Digite os novos itens")
+            itenslista[item-1] = itemconteudo
+            exibiritens()
+        }
+ 
+        function deletarescolha(){
+            let item = prompt("Qual item deseja escluir?")
+            itenslista[item-1] = itemconteudo.pop()
+            exibiritens()
+        }
+    </script>
+ 
+ 
+</body>
+</html>

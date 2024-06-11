@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrículas em Ordem Crescente</title>
+</head>
+<body>
+   
+    <h1>Matrículas em Ordem Crescente</h1>
+    <div id="matriculas"></div>
+    <button onclick="lerMatriculas()">Ler 100 Matrículas</button>
+ 
+    <script>
+        const matriculas = [];
+
+        function lerMatriculas() {
+            for (let i = 0; i < 100; i++) {
+                let matricula = prompt("Digite o número da matrícula " + (i + 1));
+                matriculas.push(matricula);
+            }
+            matriculas.sort((a, b) => a - b);  // Ordena os números em ordem crescente
+            exibitMatriculas();
+        }
+ 
+        function exibitMatriculas() {
+            let matriculasHTML = "<ol>";
+            for (let i = 0; i < matriculas.length; i++) {
+                matriculasHTML += "<li>" + matriculas[i] + "</li>";
+            }
+            matriculasHTML += "</ol>";
+            document.getElementById("matriculas").innerHTML = matriculasHTML;
+        }
+    </script>
+ 
+</body>
+</html>

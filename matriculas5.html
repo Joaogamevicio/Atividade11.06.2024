@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos e Estoque</title>
+</head>
+<body>
+   
+    <h1>Produtos e Estoque</h1>
+    <div id="produtos"></div>
+    <button onclick="lerProdutos()">Ler 400 Produtos</button>
+ 
+    <script>
+        const codigos = [];
+        const quantidades = [];
+
+        function lerProdutos() {
+            for (let i = 0; i < 400; i++) {
+                let codigo = prompt("Digite o código do produto " + (i + 1));
+                let quantidade = parseInt(prompt("Digite a quantidade em estoque do produto " + (i + 1)));
+                codigos.push(codigo);
+                quantidades.push(quantidade);
+            }
+            exibitProdutos();
+        }
+ 
+        function exibitProdutos() {
+            let produtosHTML = "<h2>Produtos</h2><ol>";
+            for (let i = 0; i < codigos.length; i++) {
+                produtosHTML += "<li>Código: " + codigos[i] + " - Quantidade: " + quantidades[i] + "</li>";
+            }
+            produtosHTML += "</ol>";
+
+            document.getElementById("produtos").innerHTML = produtosHTML;
+        }
+    </script>
+ 
+</body>
+</html>

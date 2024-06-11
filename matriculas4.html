@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professores e Tempo de Profissão</title>
+</head>
+<body>
+   
+    <h1>Professores e Tempo de Profissão</h1>
+    <div id="professores"></div>
+    <button onclick="lerProfessores()">Ler 50 Professores</button>
+ 
+    <script>
+        const professores = [];
+        const tempoProfissao = [];
+
+        function lerProfessores() {
+            for (let i = 0; i < 50; i++) {
+                let nome = prompt("Digite o nome do professor " + (i + 1));
+                let tempo = parseInt(prompt("Digite o tempo de profissão do professor " + (i + 1) + " em anos"));
+                professores.push(nome);
+                tempoProfissao.push(tempo);
+            }
+            exibitProfessores();
+        }
+ 
+        function exibitProfessores() {
+            let professoresHTML = "<h2>Professores</h2><ol>";
+            for (let i = 0; i < professores.length; i++) {
+                professoresHTML += "<li>" + professores[i] + " - " + tempoProfissao[i] + " anos de profissão</li>";
+            }
+            professoresHTML += "</ol>";
+
+            document.getElementById("professores").innerHTML = professoresHTML;
+        }
+    </script>
+ 
+</body>
+</html>

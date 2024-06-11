@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrículas de Alunos</title>
+</head>
+<body>
+   
+    <h1>Matrículas de Alunos</h1>
+    <div id="matriculas"></div>
+    <button onclick="adicionarMatricula()">Adicionar Matrícula</button>
+    <button onclick="alterarMatricula()">Alterar Matrícula</button>
+    <button onclick="deletarUltimaMatricula()">Deletar Última Matrícula</button>
+    <button onclick="deletarMatriculaEscolhida()">Deletar Matrícula Escolhida</button>
+ 
+    <script>
+        const matriculas = [];
+        exibitMatriculas();
+ 
+        function adicionarMatricula() {
+            if (matriculas.length >= 100) {
+                alert("Número máximo de matrículas atingido.");
+                return;
+            }
+
+            let novaMatricula;
+            do {
+                novaMatricula = prompt("Digite o número da matrícula");
+                if (matriculas.includes(novaMatricula)) {
+                    alert("Esta matrícula já foi inserida. Tente novamente.");
+                }
+            } while (matriculas.includes(novaMatricula));
+
+            matriculas.push(novaMatricula);
+            exibitMatriculas();
+        }
+ 
+        function exibitMatriculas() {
+            let matriculasHTML = "<ol>";
+            for (let i = 0; i < matriculas.length; i++) {
+                matriculasHTML += "<li>" + matriculas[i] + "</li>";
+            }
+            matriculasHTML += "</ol>";
+            document.getElementById("matriculas").innerHTML = matriculasHTML;
+        }
+ 
+        function deletarUltimaMatricula() {
+            matriculas.pop();
+            exibitMatriculas();
+        }
+ 
+        function alterarMatricula() {
+            let indice = prompt("Qual matrícula deseja alterar? (Número do item na lista)");
+            if (indice < 1 || indice > matriculas.length) {
+                alert("Índice inválido.");
+                return;
+            }
+
+            let novaMatricula;
+            do {
+                novaMatricula = prompt("Digite o novo número da matrícula");
+                if (matriculas.includes(novaMatricula)) {
+                    alert("Esta matrícula já foi inserida. Tente novamente.");
+                }
+            } while (matriculas.includes(novaMatricula));
+
+            matriculas[indice - 1] = novaMatricula;
+            exibitMatriculas();
+        }
+ 
+        function deletarMatriculaEscolhida() {
+            let indice = prompt("Qual matrícula deseja deletar? (Número do item na lista)");
+            if (indice < 1 || indice > matriculas.length) {
+                alert("Índice inválido.");
+                return;
+            }
+
+            matriculas.splice(indice - 1, 1);
+            exibitMatriculas();
+        }
+    </script>
+ 
+</body>
+</html>
