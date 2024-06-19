@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações com Vetores</title>
+</head>
+<body>
+   
+    <h1>Operações com Vetores</h1>
+    <div id="vetores"></div>
+    <button onclick="lerVetores()">Ler Vetores PROFESSOR e TEMPOPROFISSAO</button>
+ 
+    <script>
+        const PROFESSOR = [];
+        const TEMPOPROFISSAO = [];
+ 
+        function lerVetores() {
+            for (let i = 0; i < 100; i++) {
+                let nomeProfessor = prompt("Digite o nome do professor " + (i + 1));
+                let tempoProfissao = Number(prompt("Digite o tempo de profissão do professor " + (i + 1)));
+                PROFESSOR.push(nomeProfessor);
+                TEMPOPROFISSAO.push(tempoProfissao);
+            }
+            ordenarPorTempoProfissao();
+            exibirNomesProfessores();
+        }
+ 
+        function ordenarPorTempoProfissao() {
+            // Ordena o vetor TEMPOPROFISSAO em ordem decrescente e ajusta o vetor PROFESSOR de acordo
+            for (let i = 0; i < TEMPOPROFISSAO.length; i++) {
+                for (let j = i + 1; j < TEMPOPROFISSAO.length; j++) {
+                    if (TEMPOPROFISSAO[i] < TEMPOPROFISSAO[j]) {
+                        // Troca de posição no vetor TEMPOPROFISSAO
+                        let tempTempo = TEMPOPROFISSAO[i];
+                        TEMPOPROFISSAO[i] = TEMPOPROFISSAO[j];
+                        TEMPOPROFISSAO[j] = tempTempo;
+                        // Troca de posição correspondente no vetor PROFESSOR
+                        let tempProfessor = PROFESSOR[i];
+                        PROFESSOR[i] = PROFESSOR[j];
+                        PROFESSOR[j] = tempProfessor;
+                    }
+                }
+            }
+        }
+ 
+        function exibirNomesProfessores() {
+            let vetoresHTML = "<h2>Professores em Ordem Decrescente de Tempo de Profissão</h2><ol>";
+            for (let i = 0; i < PROFESSOR.length; i++) {
+                vetoresHTML += "<li>" + PROFESSOR[i] + " - " + TEMPOPROFISSAO[i] + " anos</li>";
+            }
+            vetoresHTML += "</ol>";
+ 
+            document.getElementById("vetores").innerHTML = vetoresHTML;
+        }
+    </script>
+ 
+</body>
+</html>

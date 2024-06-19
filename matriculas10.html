@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações com Vetores</title>
+</head>
+<body>
+   
+    <h1>Operações com Vetores</h1>
+    <div id="vetores"></div>
+    <button onclick="lerVetores()">Ler Vetores de Códigos e Quantidades</button>
+ 
+    <script>
+        const CODIGOS_MERCADORIAS = [];
+        const QUANTIDADES_MERCADORIAS = [];
+ 
+        function lerVetores() {
+            for (let i = 0; i < 3; i++) {
+                let codigoMercadoria = Number(prompt("Digite o código da mercadoria " + (i + 1)));
+                let quantidadeMercadoria = Number(prompt("Digite a quantidade da mercadoria " + (i + 1)));
+                CODIGOS_MERCADORIAS.push(codigoMercadoria);
+                QUANTIDADES_MERCADORIAS.push(quantidadeMercadoria);
+            }
+            ordenarPorQuantidade();
+            exibirCodigosQuantidades();
+        }
+ 
+        function ordenarPorQuantidade() {
+            // Ordena o vetor QUANTIDADES_MERCADORIAS em ordem crescente e ajusta o vetor CODIGOS_MERCADORIAS de acordo
+            for (let i = 0; i < QUANTIDADES_MERCADORIAS.length; i++) {
+                for (let j = i + 1; j < QUANTIDADES_MERCADORIAS.length; j++) {
+                    if (QUANTIDADES_MERCADORIAS[i] > QUANTIDADES_MERCADORIAS[j]) {
+                        // Troca de posição no vetor QUANTIDADES_MERCADORIAS
+                        let tempQuantidade = QUANTIDADES_MERCADORIAS[i];
+                        QUANTIDADES_MERCADORIAS[i] = QUANTIDADES_MERCADORIAS[j];
+                        QUANTIDADES_MERCADORIAS[j] = tempQuantidade;
+                        // Troca de posição correspondente no vetor CODIGOS_MERCADORIAS
+                        let tempCodigo = CODIGOS_MERCADORIAS[i];
+                        CODIGOS_MERCADORIAS[i] = CODIGOS_MERCADORIAS[j];
+                        CODIGOS_MERCADORIAS[j] = tempCodigo;
+                    }
+                }
+            }
+        }
+ 
+        function exibirCodigosQuantidades() {
+            let vetoresHTML = "<h2>Códigos e Quantidades em Ordem Crescente de Quantidade</h2><ul>";
+            for (let i = 0; i < CODIGOS_MERCADORIAS.length; i++) {
+                vetoresHTML += "<li>Código: " + CODIGOS_MERCADORIAS[i] + ", Quantidade: " + QUANTIDADES_MERCADORIAS[i] + "</li>";
+            }
+            vetoresHTML += "</ul>";
+ 
+            document.getElementById("vetores").innerHTML = vetoresHTML;
+        }
+    </script>
+ 
+</body>
+</html>

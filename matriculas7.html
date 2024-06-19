@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplicação de Vetores</title>
+</head>
+<body>
+   
+    <h1>Multiplicação de Vetores</h1>
+    <div id="vetores"></div>
+    <button onclick="ler50Numeros()">Ler 50 Números</button>
+ 
+    <script>
+        const numeros = [];
+        const numerosMultiplicados = [];
+
+        function ler50Numeros() {
+            for (let i = 0; i < 3; i++) {
+                let numero = parseFloat(prompt("Digite o número " + (i + 1)));
+                numeros.push(numero);
+                numerosMultiplicados.push(numero * 7);
+            }
+            exibitVetores();
+        }
+
+
+ function ordenarVetor(vetor) {
+            for (let i = 0; i < vetor.length; i++) {
+                for (let j = 0; j < vetor.length - 1; j++) {
+                    if((ordem == "decrescente" && vetor[j] < vetor[j + 1])) {
+                        let temp = vetor[j];  
+                        vetor[j] = vetor[j + 1];
+                        vetor[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
+ document.getElementById("ordenarMatriculas").innerHTML = numeros 
+ 
+        function exibitVetores() {
+            let numerosHTML = "<h2>Vetor Original</h2><ol>";
+            for (let i = 0; i < numeros.length; i++) {
+                numerosHTML += "<li>" + numeros[i] + "</li>";
+            }
+            numerosHTML += "</ol>";
+
+            numerosHTML += "<h2>Vetor Multiplicado por 3</h2><ol>";
+            for (let i = 0; i < numerosMultiplicados.length; i++) {
+                numerosHTML += "<li>" + numerosMultiplicados[i] + "</li>";
+            }
+            numerosHTML += "</ol>";
+
+            document.getElementById("vetores").innerHTML = numerosHTML;
+        }
+    </script>
+ 
+</body>
+</html>

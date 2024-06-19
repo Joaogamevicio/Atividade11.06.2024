@@ -15,14 +15,21 @@
         const matriculas = [];
 
         function lerMatriculas() {
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 10; i++) {
                 let matricula = prompt("Digite o número da matrícula " + (i + 1));
                 matriculas.push(matricula);
             }
             matriculas.sort((a, b) => a - b);  // Ordena os números em ordem crescente
             exibitMatriculas();
         }
- 
+
+function exibirMatriculas() {
+    console.log(matriculas);
+}
+
+exibirMatriculas();
+
+        
         function exibitMatriculas() {
             let matriculasHTML = "<ol>";
             for (let i = 0; i < matriculas.length; i++) {
